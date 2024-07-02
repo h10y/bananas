@@ -1,14 +1,11 @@
 FROM rocker/r2u:24.04
-RUN install.r remotes renv pak rconfig jsonlite yaml deps
-RUN cp /usr/lib/R/site-library/deps/examples/03-cli/deps-cli.R /usr/local/bin/deps-cli
-RUN chmod +x /usr/local/bin/deps-cli
 
 RUN groupadd app && useradd -g app app
 WORKDIR /home/app
 
+RUN install.r deps
 COPY app/dependencies.json .
-RUN deps-cli install
-# RUN R -q -e "install.packages('shiny')"
+RUN R -q -e "deps::install()"
 
 COPY app .
 
