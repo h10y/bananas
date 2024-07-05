@@ -30,7 +30,7 @@ cd r-shiny
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
 # Specify tag
-export TAG=bananas/r-shiny:main
+export TAG=bananas/r-shiny:latest
 
 # Build image
 docker build -t $TAG .

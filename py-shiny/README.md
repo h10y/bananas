@@ -30,7 +30,7 @@ cd py-shiny
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
 # Specify tag
-export TAG=bananas/py-shiny:main
+export TAG=bananas/py-shiny:latest
 
 # Build image
 docker build -t $TAG .
