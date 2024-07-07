@@ -4,19 +4,11 @@ Shiny app for classifying ripening bananas based on their color.
 
 Data set from <https://github.com/psolymos/bananas>.
 
-- [Bananas Shiny App](#bananas-shiny-app)
-  - [R](#r)
-  - [Python](#python)
-- [Shinylive](#shinylive)
+![](example-bananas.png)
 
-## R
+| Flavour           | Link  | Image  |
+|-------------------|---|---|
+| Python Shiny      | [`py-shiny`](./py-shiny/)  | [`ghcr.io/h10y/bananas/py-shiny`](https://github.com/h10y/bananas/pkgs/container/bananas%2Fpy-shiny)  |
+| R Shiny           | [`r-shiny`](./r-shiny/)  | [`ghcr.io/h10y/bananas/r-shiny`](https://github.com/h10y/bananas/pkgs/container/bananas%2Fr-shiny)  |
 
-See the [`r-shiny`](./r-shiny/) folder.
-
-## Python
-
-See the [`py-shiny`](./py-shiny/) folder.
-
-# Shinylive
-
-Does not work - see the [`shinylive.md`](./shinylive.md) file for details.
+Shinylive does not work - see the [`shinylive.md`](./shinylive.md) file for details.
