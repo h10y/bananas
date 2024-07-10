@@ -21,7 +21,7 @@ docker run --rm -p 8080:3838 ghcr.io/h10y/bananas/r-shiny:latest
 ```
 
 Containerized version using `rocker/r2u`
-[Image size: 9750MB, build time: 28 sec]
+[Image size: 975MB, build time: 28 sec]
 
 ```bash
 # Change directory
@@ -41,7 +41,7 @@ docker run --rm -p 8080:3838 $TAG
 ```
 
 Using `rhub/r-minimal` from <https://github.com/r-hub/r-minimal/>
-[Image size: 1230MB, build time: 10.4 min]
+[Image size: 230MB, build time: 10.4 min]
 
 ```bash
 # Change directory
