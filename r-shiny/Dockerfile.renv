@@ -3,6 +3,12 @@ FROM rocker/r2u:24.04
 RUN groupadd app && useradd -g app app
 WORKDIR /home/app
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        libcurl4-openssl-dev \
+        libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN install.r renv
 COPY app/renv.lock .
 RUN R -q -e "options(renv.consent = TRUE);renv::restore()"
