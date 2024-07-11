@@ -3,7 +3,8 @@ FROM rocker/r2u:24.04
 RUN groupadd app && useradd -g app app
 WORKDIR /home/app
 
-RUN install2.r --error --skipinstalled shiny plotly e1071
+COPY app/DESCRIPTION .
+RUN R -q -e "remotes::install_deps(upgrade='never')"
 
 COPY app .
 

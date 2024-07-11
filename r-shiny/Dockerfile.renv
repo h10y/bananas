@@ -3,7 +3,9 @@ FROM rocker/r2u:24.04
 RUN groupadd app && useradd -g app app
 WORKDIR /home/app
 
-RUN install2.r --error --skipinstalled shiny plotly e1071
+RUN install.r renv
+COPY app/renv.lock .
+RUN R -q -e "options(renv.consent = TRUE);renv::restore()"
 
 COPY app .
 
