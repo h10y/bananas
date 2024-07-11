@@ -1,5 +1,7 @@
 # Bananas app: R
 
+Model training script: [`train.R`](./train.R)
+
 Run the app interactively:
 
 ```bash

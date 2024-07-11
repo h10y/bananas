@@ -1,5 +1,7 @@
 # Bananas app: Python
 
+Model training script: [`train.py`](./train.py)
+
 Run the app interactively:
 
 ```bash
