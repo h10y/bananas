@@ -139,14 +139,14 @@ def server(input, output, session):
 
     @reactive.Calc
     def pred():
-        print(f"G={input.green()} / Y={input.yellow()} / B={input.brown()}")
+        print(f"G={input.green()} / Y={input.yellow()} / B={input.brown()}", flush=True)
 
         prediction = svm_model.predict_proba([[
                                         functions.cast_to_float(input.green()), 
                                         functions.cast_to_float(input.yellow()),
                                         functions.cast_to_float(input.brown())
                                     ]])
-        print(prediction[0])
+        print(prediction[0], flush=True)
 
         return prediction[0], classes[list(prediction[0]).index(max(prediction[0]))]
 
