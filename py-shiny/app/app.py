@@ -1,5 +1,5 @@
 from shiny import App, render, reactive, ui
-from functions import *
+import functions
 
 # Libraries for data and SVM model
 import pandas as pd
@@ -78,13 +78,13 @@ def server(input, output, session):
     def txt():
         return f"n*2 is {input.n() * 2}"
 
-    ternary = go.FigureWidget(
+    ternary = functions.go.FigureWidget(
         data=[
-            trace_fun(x[x.ripeness == "Under"], "#576a26", "Under"),
-            trace_fun(x[x.ripeness == "Ripe"], "#eece5a", "Ripe"),
-            trace_fun(x[x.ripeness == "Very"], "#966521", "Very"),
-            trace_fun(x[x.ripeness == "Over"], "#261d19", "Over"),
-            trace_fun(pd.DataFrame([{
+            functions.trace_fun(x[x.ripeness == "Under"], "#576a26", "Under"),
+            functions.trace_fun(x[x.ripeness == "Ripe"], "#eece5a", "Ripe"),
+            functions.trace_fun(x[x.ripeness == "Very"], "#966521", "Very"),
+            functions.trace_fun(x[x.ripeness == "Over"], "#261d19", "Over"),
+            functions.trace_fun(pd.DataFrame([{
                 'green': 0,
                 'yellow': 0,
                 'brown': 0,
@@ -100,18 +100,18 @@ def server(input, output, session):
             },
             'ternary': {
                 'sum': 1,
-                'aaxis': axis_fun('Green'),
-                'baxis': axis_fun('Yellow'),
-                'caxis': axis_fun('Brown'),
+                'aaxis': functions.axis_fun('Green'),
+                'baxis': functions.axis_fun('Yellow'),
+                'caxis': functions.axis_fun('Brown'),
                 'bgcolor': "white",
             },
             'height': 400,
         },
     )
 
-    bars = go.FigureWidget(
+    bars = functions.go.FigureWidget(
         data=[
-            go.Bar({
+            functions.go.Bar({
                 'x': classes,
                 'y': [0,0,0,0],
                 'marker': {'color': ["#576a26", "#eece5a", "#966521", "#261d19"]},
@@ -142,9 +142,9 @@ def server(input, output, session):
         print(f"G={input.green()} / Y={input.yellow()} / B={input.brown()}")
 
         prediction = svm_model.predict_proba([[
-                                        cast_to_float(input.green()), 
-                                        cast_to_float(input.yellow()),
-                                        cast_to_float(input.brown())
+                                        functions.cast_to_float(input.green()), 
+                                        functions.cast_to_float(input.yellow()),
+                                        functions.cast_to_float(input.brown())
                                     ]])
         print(prediction[0])
 
@@ -152,9 +152,9 @@ def server(input, output, session):
 
     @reactive.Effect
     def _():
-        ternary.data[4].a = [cast_to_float(input.green())]
-        ternary.data[4].b = [cast_to_float(input.yellow())]
-        ternary.data[4].c = [cast_to_float(input.brown())]
+        ternary.data[4].a = [functions.cast_to_float(input.green())]
+        ternary.data[4].b = [functions.cast_to_float(input.yellow())]
+        ternary.data[4].c = [functions.cast_to_float(input.brown())]
 
         bars.data[0].y = pred()[0] 
 
